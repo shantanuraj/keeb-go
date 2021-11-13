@@ -18,7 +18,7 @@ const (
 
 var Handlers = map[Keys]KeyHandler{
 	F17: func(_ bool) error {
-		return actions.JoinZoom(os.Getenv("KEEB_ZOOM"))
+		return actions.OpenURLWithMessage(os.Getenv("KEEB_ZOOM"), "Joining Zoom")
 	},
 	F18: func(isShiftPressed bool) error {
 		if isShiftPressed {

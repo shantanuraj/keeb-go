@@ -1,8 +1,6 @@
 package actions
 
 import (
-	"os/exec"
-
 	"golang.design/x/clipboard"
 )
 
@@ -12,7 +10,5 @@ func OpenStackOverflowWithClipboard() error {
 	if clip != "" {
 		url += "search?q=" + clip
 	}
-	cmd := exec.Command("/usr/bin/open", url)
-	_, err := cmd.CombinedOutput()
-	return err
+	return OpenURLWithMessage(url, "Opening StackOverflow")
 }
