@@ -28,7 +28,7 @@ var Handlers = map[Keys]KeyHandler{
 	},
 	F19: func(isShiftPressed bool) error {
 		if isShiftPressed {
-			// TODO implement
+			return actions.OpenSlack(os.Getenv("KEEB_SLACK_TEAM_ID"))
 		}
 		return actions.OpenStackOverflowWithClipboard()
 	},
