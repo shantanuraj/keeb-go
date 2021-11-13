@@ -22,7 +22,7 @@ var Handlers = map[Keys]KeyHandler{
 	},
 	F18: func(isShiftPressed bool) error {
 		if isShiftPressed {
-			// TODO implement
+			return actions.PlaySpotifyPlaylist(os.Getenv("KEEB_PLAYLIST_ALT"))
 		}
 		return actions.PlaySpotifyPlaylist(os.Getenv("KEEB_PLAYLIST"))
 	},
