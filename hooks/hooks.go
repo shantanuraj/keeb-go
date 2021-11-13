@@ -21,10 +21,11 @@ var Handlers = map[Keys]KeyHandler{
 		return actions.OpenURLWithMessage(os.Getenv("KEEB_ZOOM"), "Joining Zoom")
 	},
 	F18: func(isShiftPressed bool) error {
+		playlist := os.Getenv("KEEB_PLAYLIST")
 		if isShiftPressed {
-			return actions.PlaySpotifyPlaylist(os.Getenv("KEEB_PLAYLIST_ALT"))
+			playlist = os.Getenv("KEEB_PLAYLIST_ALT")
 		}
-		return actions.PlaySpotifyPlaylist(os.Getenv("KEEB_PLAYLIST"))
+		return actions.PlaySpotifyTrack(playlist)
 	},
 	F19: func(isShiftPressed bool) error {
 		if isShiftPressed {
