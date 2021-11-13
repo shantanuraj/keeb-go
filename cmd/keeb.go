@@ -1,9 +1,8 @@
 package main
 
 import (
-	"fmt"
-
 	hook "github.com/robotn/gohook"
+	"sraj.me/keeb-go/hooks"
 )
 
 type Keys = uint16
@@ -44,10 +43,10 @@ func main() {
 func handler(code Keys, isShiftPressed bool) {
 	switch code {
 	case F17:
-		fmt.Println("f17")
+		hooks.HandleF17()
 	case F18:
-		fmt.Println("f18: ", isShiftPressed)
+		hooks.HandleF18(isShiftPressed)
 	case F19:
-		fmt.Println("f19: ", isShiftPressed)
+		hooks.HandleF19(isShiftPressed)
 	}
 }
