@@ -29,9 +29,7 @@ var Handlers = map[Keys]KeyHandler{
 	F19: func(isShiftPressed bool) error {
 		if isShiftPressed {
 			// TODO implement
-		} else {
-			// TODO implement
 		}
-		return nil
+		return actions.OpenStackOverflowWithClipboard()
 	},
 }
