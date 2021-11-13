@@ -1,17 +1,10 @@
 package main
 
 import (
+	"fmt"
+
 	hook "github.com/robotn/gohook"
 	"sraj.me/keeb-go/hooks"
-)
-
-type Keys = uint16
-
-const (
-	Shift Keys = 56
-	F17   Keys = 64
-	F18   Keys = 79
-	F19   Keys = 80
 )
 
 func main() {
@@ -20,9 +13,9 @@ func main() {
 	defer hook.End()
 
 	for ev := range evChan {
-		if ev.Rawcode == Shift && ev.Kind == hook.KeyHold {
+		if ev.Rawcode == hooks.Shift && ev.Kind == hook.KeyHold {
 			isShiftPressed = true
-		} else if ev.Rawcode == Shift && ev.Kind == hook.KeyUp {
+		} else if ev.Rawcode == hooks.Shift && ev.Kind == hook.KeyUp {
 			isShiftPressed = false
 		}
 
@@ -30,23 +23,14 @@ func main() {
 			continue
 		}
 		switch ev.Rawcode {
-		case F17:
+		case hooks.F17:
 			fallthrough
-		case F18:
+		case hooks.F18:
 			fallthrough
-		case F19:
-			handler(ev.Rawcode, isShiftPressed)
+		case hooks.F19:
+			if err := hooks.Handlers[ev.Rawcode](isShiftPressed); err != nil {
+				fmt.Println(err)
+			}
 		}
-	}
-}
-
-func handler(code Keys, isShiftPressed bool) {
-	switch code {
-	case F17:
-		hooks.HandleF17()
-	case F18:
-		hooks.HandleF18(isShiftPressed)
-	case F19:
-		hooks.HandleF19(isShiftPressed)
 	}
 }

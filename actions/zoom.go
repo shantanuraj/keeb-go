@@ -5,12 +5,9 @@ import (
 	"os/exec"
 )
 
-func JoinZoom(link string) (bool, error) {
+func JoinZoom(link string) error {
 	fmt.Println("Joining zoom:", link)
 	cmd := exec.Command("/usr/bin/open", link)
 	_, err := cmd.CombinedOutput()
-	if err != nil {
-		return false, err
-	}
-	return true, nil
+	return err
 }
