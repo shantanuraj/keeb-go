@@ -1,7 +1,12 @@
 package hooks
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+
+	"sraj.me/keeb-go/actions"
+)
 
 func HandleF18(isShiftPressed bool) {
-	fmt.Println("F18", isShiftPressed)
+	fmt.Println(actions.JoinZoom(os.Getenv("KEEB_ZOOM")))
 }
