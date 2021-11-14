@@ -2,6 +2,7 @@ package actions
 
 import (
 	"fmt"
+	"log"
 	"os/exec"
 	"runtime"
 )
@@ -22,6 +23,6 @@ func openURL(url string) error {
 }
 
 func OpenURLWithMessage(url string, message string) error {
-	fmt.Println(message, url)
+	log.Println(message, url)
 	return openURL(url)
 }

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"log"
 
 	hook "github.com/robotn/gohook"
 	"sraj.me/keeb-go/hooks"
@@ -24,7 +24,7 @@ func main() {
 		handler, ok := hooks.Handlers[event.Rawcode]
 		if ok {
 			if err := handler(isShiftPressed); err != nil {
-				fmt.Println(err)
+				log.Fatalln(err)
 			}
 		}
 	}
