@@ -15,3 +15,6 @@
 # vendor/
 keeb-go
 keeb
+
+# Keyboard firmware build files
+firmware/.build
